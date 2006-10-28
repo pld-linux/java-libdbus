@@ -1,0 +1,29 @@
+--- libdbus-java-1.9/Makefile.orig	2006-08-24 23:30:51.000000000 +0200
++++ libdbus-java-1.9/Makefile	2006-10-28 11:00:45.122874750 +0200
+@@ -12,8 +12,10 @@
+ JAVAH?=javah
+ JAVADOC?=javadoc
+ JAR?=jar
+-CFLAGS?=`pkg-config --cflags dbus-1` -Os -Wall -Werror
+-LDFLAGS?=`pkg-config --libs dbus-1`
++CFLAGS?=-Os -Wall -Werror
++ALLCFLAGS=$(CFLAGS) `pkg-config --cflags dbus-1`
++LDFLAGS?=
++LIBS=`pkg-config --libs dbus-1`
+ CC?=gcc
+ LD?=ld
+ STRIP?=strip
+@@ -72,11 +74,10 @@
+ 	$(JAVAH) -classpath classes:$(CLASSPATH) -d . org.freedesktop.dbus.MethodCall
+ 	touch $@
+ dbus-java.o: dbus-java.c org_freedesktop_dbus_DBusConnection.h org_freedesktop_dbus_DBusErrorMessage.h org_freedesktop_dbus_MethodCall.h
+-	$(CC) $(CFLAGS) -fpic -c $< -o $@
++	$(CC) $(ALLCFLAGS) -fpic -c $< -o $@
+ 
+ libdbus-java.so: dbus-java.o
+-	$(LD) $(LDFLAGS) -fpic -shared -o $@ $^
+-	$(STRIP) $@
++	$(LD) $(LDFLAGS) -fpic -shared -o $@ $^ $(LIBS)
+ libdbus-java-$(VERSION).jar: .classes
+ 	(cd classes; $(JAR) -cf ../$@ org/freedesktop/dbus/*.class org/freedesktop/*.class org/freedesktop/Hal/*.class)
+ dbus-java-test-$(VERSION).jar: .testclasses
