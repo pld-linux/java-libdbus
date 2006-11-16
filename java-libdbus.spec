@@ -1,13 +1,12 @@
 Summary:	Java 1.5 bindings for D-BUS library
 Summary(pl):	Dowi±zania Javy 1.5 dla biblioteki D-BUS
 Name:		java-libdbus
-Version:	1.9
+Version:	1.11
 Release:	1
-# docs are on GPL v2, but no license information in code
-License:	GPL v2 (?)
+License:	AFL v2.1 or GPL v2
 Group:		Development/Languages/Java
 Source0:	http://dbus.freedesktop.org/releases/dbus-java/libdbus-java-%{version}.tar.gz
-# Source0-md5:	30097d7a122a11779908d7796cd3e65e
+# Source0-md5:	3ef2724a4ae4fbc4ec22381ed88a8030
 Patch0:		%{name}-make.patch
 URL:		http://www.freedesktop.org/Software/DBusBindings
 BuildRequires:	dbus-devel >= 0.90
@@ -35,10 +34,12 @@ Dowi±zania Javy 1.5 dla biblioteki D-BUS.
 	LD="%{__cc}" \
 	LDFLAGS="%{rpmldflags}"
 
+%{__make} doc
+
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
+%{__make} install install-man \
 	BINPREFIX=$RPM_BUILD_ROOT%{_bindir} \
 	DOCPREFIX=`pwd`/docs \
 	JARPREFIX=$RPM_BUILD_ROOT%{_javadir} \
@@ -53,9 +54,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc changelog
+%doc AUTHORS COPYING README changelog
 # javadoc
-%doc docs/api
+%doc doc/api
 %attr(755,root,root) %{_bindir}/DBusViewer
 %attr(755,root,root) %{_bindir}/CreateInterface
 %attr(755,root,root) %{_bindir}/ListDBus
