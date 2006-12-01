@@ -1,18 +1,18 @@
 Summary:	Java 1.5 bindings for D-BUS library
 Summary(pl):	Dowi±zania Javy 1.5 dla biblioteki D-BUS
 Name:		java-libdbus
-Version:	1.11
+Version:	1.12
 Release:	1
 License:	AFL v2.1 or GPL v2
 Group:		Development/Languages/Java
 Source0:	http://dbus.freedesktop.org/releases/dbus-java/libdbus-java-%{version}.tar.gz
-# Source0-md5:	3ef2724a4ae4fbc4ec22381ed88a8030
+# Source0-md5:	69298e302ff3eff234dfcdfa3d753494
 Patch0:		%{name}-make.patch
 URL:		http://www.freedesktop.org/Software/DBusBindings
 BuildRequires:	dbus-devel >= 0.90
 BuildRequires:	docbook-to-man
 BuildRequires:	jdk >= 1.5
-BuildRequires:	latex2html
+BuildRequires:	tex4ht
 Requires:	dbus-libs >= 0.90
 Requires:	jre >= 1.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
