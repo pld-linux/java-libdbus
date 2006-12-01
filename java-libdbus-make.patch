@@ -1,12 +1,14 @@
---- libdbus-java-1.11/Makefile.orig	2006-11-14 17:24:46.000000000 +0100
-+++ libdbus-java-1.11/Makefile	2006-11-16 18:24:39.636176750 +0100
-@@ -15,8 +15,8 @@
+--- libdbus-java-1.12/Makefile.orig	2006-11-21 15:42:35.000000000 +0100
++++ libdbus-java-1.12/Makefile	2006-12-01 19:30:38.610535000 +0100
+@@ -14,9 +14,9 @@
+ JAVADOC?=javadoc
  JAR?=jar
  INCLUDES?=`pkg-config --cflags dbus-1` -I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux
- CFLAGS?= -Os -Wall -Werror 
+-CFLAGS?= -Os -Wall -Werror -pedantic -std=c99
 -CFLAGS+=$(INCLUDES)
 -CFLAGS+=$(call cc-option,-fno-stack-protector,)
-+override CFLAGS+=$(INCLUDES)
++CFLAGS?= -Os
++override CFLAGS+= -Wall -Werror -pedantic -std=c99 $(INCLUDES)
 +override CFLAGS+=$(call cc-option,-fno-stack-protector,)
  LIBS?=`pkg-config --libs dbus-1`
  CC?=gcc
@@ -17,5 +19,5 @@
  	$(LD) $(LDFLAGS) -fpic -shared -o $@ $^ $(LIBS)
 -	$(STRIP) $@
  libdbus-java-$(VERSION).jar: .classes
- 	(cd classes; $(JAR) -cf ../$@ org/freedesktop/dbus/*.class org/freedesktop/*.class org/freedesktop/Hal/*.class)
+ 	(cd classes; $(JAR) -cf ../$@ org/freedesktop/dbus/*.class org/freedesktop/*.class)
  dbus-java-test-$(VERSION).jar: .testclasses
