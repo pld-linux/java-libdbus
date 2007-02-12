@@ -1,5 +1,5 @@
 Summary:	Java 1.5 bindings for D-BUS library
-Summary(pl):	Dowi±zania Javy 1.5 dla biblioteki D-BUS
+Summary(pl.UTF-8):   DowiÄ…zania Javy 1.5 dla biblioteki D-BUS
 Name:		java-libdbus
 Version:	1.13
 Release:	1
@@ -20,8 +20,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Java 1.5 bindings for D-BUS library.
 
-%description -l pl
-Dowi±zania Javy 1.5 dla biblioteki D-BUS.
+%description -l pl.UTF-8
+DowiÄ…zania Javy 1.5 dla biblioteki D-BUS.
 
 %prep
 %setup -q -n libdbus-java-%{version}
