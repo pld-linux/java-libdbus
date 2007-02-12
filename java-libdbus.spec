@@ -1,5 +1,5 @@
 Summary:	Java 1.5 bindings for D-BUS library
-Summary(pl.UTF-8):   Dowiązania Javy 1.5 dla biblioteki D-BUS
+Summary(pl.UTF-8):	Dowiązania Javy 1.5 dla biblioteki D-BUS
 Name:		java-libdbus
 Version:	1.13
 Release:	1
