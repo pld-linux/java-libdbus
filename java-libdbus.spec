@@ -4,7 +4,7 @@ Name:		java-libdbus
 Version:	1.13
 Release:	1
 License:	AFL v2.1 or GPL v2
-Group:		Development/Languages/Java
+Group:		Libraries/Java
 Source0:	http://dbus.freedesktop.org/releases/dbus-java/libdbus-java-%{version}.tar.gz
 # Source0-md5:	3edbd6b16aef2d4b7b18ba101344e3e9
 Patch0:		%{name}-make.patch
