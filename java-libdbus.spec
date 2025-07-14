@@ -25,7 +25,7 @@ Dowiązania Javy 1.5 dla biblioteki D-BUS.
 
 %prep
 %setup -q -n libdbus-java-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %{__make} \
